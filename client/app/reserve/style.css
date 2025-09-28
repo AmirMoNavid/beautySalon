@@ -1,0 +1,81 @@
+.time-picker {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  width: 60%;
+  font-family: "Vazirmatn", sans-serif;
+  box-shadow: 0 0 5px #8798ad;
+}
+
+.time-picker-header {
+  text-align: center;
+  margin-bottom: 12px;
+  font-weight: bold;
+  color: #666;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.time-button {
+  padding: 8px 0;
+  background-color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #333;
+  transition: all 0.2s;
+}
+
+.time-button:hover {
+  background-color: #272727;
+  color: #fff;
+}
+
+.time-button.selected {
+  background-color: #000;
+  color: #fff;
+}
+
+.calendar {
+  width: 50% !important;
+  z-index: 0 !important;
+  height: 100%;
+}
+.rmdp-top-class {
+  justify-content: center !important;
+}
+.rmdp-day .sd:hover {
+  background-color: #272727 !important;
+  color: white !important;
+  cursor: pointer;
+}
+.rmdp-selected .sd {
+  background-color: #000 !important;
+  color: white !important;
+}
+.rmdp-week-day {
+  color: #000 !important;
+}
+.rmdp-arrow {
+  color: #000 !important;
+  border-color: #000 !important;
+}
+.rmdp-arrow-container:hover {
+  background: none !important;
+}
+.service {
+  box-shadow: 0 0 5px #8798ad;
+}
+
+@media only screen and (max-width: 750px) {
+  .time-picker {
+    width: 90%;
+  }
+  .calendar {
+    width: 90% !important;
+  }
+}
