@@ -13,14 +13,10 @@ export const useStore = create((set) => ({
     text: "",
     isDisplayed: false,
   },
-  host:
-    process.env.NODE_ENV === "production"
-      ? "https://abyekiha.ir"
-      : "http://localhost:3000",
-  baseUrl:
-    process.env.NODE_ENV === "production"
-      ? "https://api.abyekiha.ir"
-      : "http://localhost:5000",
+  host: "https://aramisbeauty.ir",
+
+  baseUrl: "https://api.aramisbeauty.ir",
+
   isLoading: false,
   salon: [],
   gallery: [],

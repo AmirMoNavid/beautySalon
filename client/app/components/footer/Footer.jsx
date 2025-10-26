@@ -4,7 +4,7 @@ import Link from "next/link";
 import { socialLinks } from "../../data/socialLinks";
 import dynamic from "next/dynamic";
 import "./footer.css";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import axios from "axios";
 import { useStore } from "@/app/config/store/use-hooks";
 import { END_POINTS } from "@/app/config/store/endPoints";
@@ -13,6 +13,7 @@ const Footer = () => {
   const { baseUrl } = useStore();
   const DynamicMap = dynamic(() => import("./map"), { ssr: false });
   const [numbers, setNumbers] = useState([]);
+  const router = useRouter();
 
   async function getNumbers() {
     try {
@@ -58,7 +59,10 @@ const Footer = () => {
           <div className="column is-one-third p-[0.75rem]">
             <div className="peivandha">
               <h1 className="footer-titr-desc mb-3">رزرو:</h1>
-              <button className="w-[80%] text-white transition hover:bg-slate-800  rounded-md p-2 px-8 text-center bg-slate-600 cursor-pointer ">
+              <button
+                onClick={() => router.push("/reserve")}
+                className="w-[80%] text-white transition hover:bg-slate-800  rounded-md p-2 px-8 text-center bg-slate-600 cursor-pointer "
+              >
                 رزرو تایم سالن
               </button>
               <ul className="numbers">{}</ul>

@@ -115,7 +115,7 @@ export const Login = async (req, res) => {
 
     res.cookie("refreshToken", refreshToken, {
       httpOnly: false,
-      // domain: new URL(ConfigPort.allowedDomains).hostname,
+      domain: new URL(ConfigPort.allowedDomains).hostname,
       path: "/",
       maxAge: 24 * 60 * 60 * 1000,
     });

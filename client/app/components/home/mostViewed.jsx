@@ -1,26 +1,19 @@
+"use client";
 import { useEffect, useState } from "react";
 import Wrapper from "../wrapper";
-import axios from "axios";
 import moment from "jalali-moment";
 import { useStore } from "@/app/config/store/use-hooks";
 import { useRouter } from "next/navigation";
+import { getMostViewed } from "@/app/services/getMostViewed";
 
 const MostViewed = () => {
   const [catalogs, setCatalogs] = useState([]);
-  const { setIsLoading, baseUrl } = useStore();
+  const { setIsLoading } = useStore();
 
   const router = useRouter();
 
-  async function getMostViewd() {
-    const { data } = await axios.get(
-      `${baseUrl}/api/article?orderBy=numViews&limit=4`
-    );
-
-    setCatalogs(data);
-  }
-
   useEffect(() => {
-    getMostViewd();
+    getMostViewed().then((res) => setCatalogs(res));
   }, []);
 
   function handleClick(id, slug) {

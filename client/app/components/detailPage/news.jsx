@@ -13,7 +13,7 @@ import CopyNewsUrl from "./copyNewsUrl";
 const Detail = ({ article }) => {
   if (!article) return;
 
-  const { setIsLoading, baseUrl, host } = useStore();
+  const { setIsLoading, host } = useStore();
 
   const delta = JSON.parse(article.desc);
   const cfg = {};
@@ -26,8 +26,6 @@ const Detail = ({ article }) => {
     /src=\/api\/uploads\/images\//g,
     `src=${host}/api/uploads/images/`
   );
-
-  // Comments
 
   useEffect(() => {
     setIsLoading(false);

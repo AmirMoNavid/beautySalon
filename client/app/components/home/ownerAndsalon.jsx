@@ -7,53 +7,28 @@ import EdcServices from "./edcServices";
 import Services from "./services";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { getDatails } from "@/app/services/getOwner";
+import { getGallery } from "@/app/services/getGallery";
+import { getSalon } from "@/app/services/getSalon";
 
 function OwnerAndsalon() {
   const [details, setDetails] = useState({});
-  const { baseUrl, host, setSalon, setGallery, gallery, salon } = useStore();
+  const { host, setSalon, setGallery, gallery, salon } = useStore();
   const router = useRouter();
 
-  async function getDatails() {
-    try {
-      const { data } = await axios.get(
-        `${baseUrl}${END_POINTS.GET_OWNERDETAILS}`
-      );
+  async function fetchData() {
+    const details = await getDatails();
+    setDetails(details);
 
-      console.log(data);
+    const gallery = await getGallery();
+    setGallery(gallery);
 
-      setDetails(data);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  async function getGallery() {
-    try {
-      const { data } = await axios.get(`${baseUrl}${END_POINTS.GALLERY}`);
-
-      setGallery(data);
-
-      window.scrollTo(0, 0);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-  async function getSalon() {
-    try {
-      const { data } = await axios.get(`${baseUrl}${END_POINTS.SALON}`);
-
-      setSalon(data);
-
-      window.scrollTo(0, 0);
-    } catch (err) {
-      console.log(err);
-    }
+    const salon = await getSalon();
+    setSalon(salon);
   }
 
   useEffect(() => {
-    getDatails();
-    getGallery();
-    getSalon();
+    fetchData();
   }, []);
 
   return (
@@ -72,6 +47,7 @@ function OwnerAndsalon() {
           <h2 className="text-center font-bold md:font-normal md:text-3xl w-full md:w-1/2 mx-auto my-6 text-[#777]">
             {details.aboutsalon}
           </h2>
+
           <div className="owner-box flex flex-col md:flex-row items-center md:items-start justify-center gap-8 my-4 section ">
             <div
               className="w-full h-[400px] md:max-w-[35%] md:h-[450px] bg-top bg-cover"

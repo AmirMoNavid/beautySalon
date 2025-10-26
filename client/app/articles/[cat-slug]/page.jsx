@@ -12,8 +12,7 @@ import ShowGallery from "@/app/components/showGallery";
 import ShowSalon from "@/app/components/showSalon";
 
 const filteredArticles = () => {
-  const { articles, setArticles, isLoading, setIsLoading, baseUrl, host } =
-    useStore();
+  const { articles, setArticles, setIsLoading, baseUrl } = useStore();
 
   const [category, setCategory] = useState();
   const params = useParams();

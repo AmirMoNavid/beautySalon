@@ -3,56 +3,27 @@ import { useParams } from "next/navigation";
 import Detail from "../../../components/detailPage/news";
 import LastNews from "../../../components/detailPage/lastNews";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Loader from "../../../components/loader/loader";
 import { getCookie } from "cookies-next";
 import { useStore } from "@/app/config/store/use-hooks";
 import ShowGallery from "@/app/components/showGallery";
 import ShowSalon from "@/app/components/showSalon";
+import { getLatestArticles } from "@/app/services/gatLatestArticles";
+import { getArticle } from "@/app/services/getArticle";
 
 const Artice = () => {
-  const { latestNews, comments, setCmments, setLatestNews, baseUrl } =
-    useStore();
-
+  const { setLatestNews } = useStore();
   const [width, setWidth] = useState(0);
   const [article, setArticle] = useState(null);
 
   const params = useParams();
 
-  const token = getCookie("refreshToken");
-
-  async function getArticle(id) {
-    const data = await axios.get(`${baseUrl}/api/article/${id}`, {
-      withCredentials: true,
-    });
-
-    const trackView = axios.get(`${baseUrl}/api/article/trackView/${id}`, {
-      withCredentials: true,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    // const parsed = JSON.parse(data);
-    setArticle(data.data);
-  }
-
-  async function getLatestNews() {
-    const data = await axios.get(`${baseUrl}/api/article/latest`, {
-      withCredentials: true,
-    });
-
-    setLatestNews(data.data);
-  }
-
   useEffect(() => {
     function handleResize() {
       setWidth(window.innerWidth);
     }
-
     window.addEventListener("resize", handleResize);
-
     handleResize();
-
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -70,8 +41,9 @@ const Artice = () => {
 
   useEffect(() => {
     const articleId = params?.["article-id"];
-    getArticle(articleId);
-    getLatestNews();
+    const token = getCookie("refreshToken");
+    getArticle(articleId, token).then((data) => setArticle(data.data));
+    getLatestArticles().then((data) => setLatestNews(data.data));
   }, []);
 
   if (!article)

@@ -1,3 +1,4 @@
+"use client";
 import { useContext } from "react";
 import ShareBox from "./shareBox";
 import { useStore } from "@/app/config/store/use-hooks";

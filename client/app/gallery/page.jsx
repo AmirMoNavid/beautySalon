@@ -8,7 +8,6 @@ import Spinner from "../components/secondLoader/spinner";
 
 function Gallery() {
   const { baseUrl, host, gallery, setGallery } = useStore();
-  const [images, setImages] = useState([]);
 
   async function getGallery() {
     try {
@@ -37,7 +36,7 @@ function Gallery() {
   }, []);
 
   return (
-    <div className="bg-[#1c1c1c] flex flex-wrap justify-start items-start gap-4  px-10 md:pr-24 py-20 pt-[95px] md:pt-[115px] min-h-screen w-full h-full">
+    <div className="bg-[#000000] flex flex-wrap justify-start items-start gap-4  px-10 md:pr-24 py-20 pt-[95px] md:pt-[115px] min-h-screen w-full h-full">
       <h1 className="text-2xl text-white  w-full">گالری</h1>
       {gallery.length > 0 ? (
         gallery?.map((image, i) => (

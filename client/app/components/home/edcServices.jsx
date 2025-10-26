@@ -1,27 +1,14 @@
 "use client";
-import { END_POINTS } from "@/app/config/store/endPoints";
 import { useStore } from "@/app/config/store/use-hooks";
-import axios from "axios";
+import { getEdcServices } from "@/app/services/getEdcServices";
 import { useEffect, useState } from "react";
 
 function EdcServices() {
   const [services, setServices] = useState([]);
-  const { baseUrl, host } = useStore();
-
-  async function getEdcServices() {
-    try {
-      const { data } = await axios.get(
-        `${baseUrl}${END_POINTS.GET_EDCSERVICES}`
-      );
-      console.log(data);
-      setServices(data);
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  const { host } = useStore();
 
   useEffect(() => {
-    getEdcServices();
+    getEdcServices().then((data) => setServices(data));
   }, []);
 
   return (

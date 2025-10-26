@@ -60,6 +60,10 @@
 .rmdp-week-day {
   color: #000 !important;
 }
+.rmdp-day.rmdp-today span {
+  background-color: #9f9f9f !important;
+  color: #fff;
+}
 .rmdp-arrow {
   color: #000 !important;
   border-color: #000 !important;

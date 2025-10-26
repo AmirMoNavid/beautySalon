@@ -1,7 +1,18 @@
+"use client";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 
 function ShowGallery() {
+  useEffect(() => {
+    const navbar = document.getElementById("header");
+    const path = window.location.pathname;
+    if (path !== "/") {
+      navbar.style.background = "rgb(0 0 0 / 90%)";
+      navbar.style.backdropFilter = "blur(2px)";
+      return;
+    }
+  }, []);
+
   const router = useRouter();
   return (
     <div

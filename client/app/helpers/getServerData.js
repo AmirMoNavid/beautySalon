@@ -2,10 +2,8 @@ import axios from "axios";
 import { getCookie } from "cookies-next";
 
 const getServerData = async (endPoint) => {
-  const beseUrl =
-    process.env.NODE_ENV === "production"
-      ? "https://api.abyekiha.ir"
-      : "http://localhost:5000";
+  const beseUrl = "https://api.aramisbeauty.ir";
+
   const url = beseUrl + endPoint;
   const token = getCookie("refreshToken");
   try {

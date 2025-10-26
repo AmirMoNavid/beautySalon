@@ -1,3 +1,4 @@
+"use client";
 import { useStore } from "@/app/config/store/use-hooks";
 import { useRouter } from "next/navigation";
 
@@ -23,7 +24,7 @@ const LastNews = () => {
         </div>
       </div>
       <ul>
-        {latestNews.slice(0, 4).map((news) => (
+        {latestNews?.slice(0, 4).map((news) => (
           <li
             onClick={() => handleClick(news.id, news.category.slug)}
             className="cursor-pointer pb-1 p-1 text-sm transition hover:text-blue-600"

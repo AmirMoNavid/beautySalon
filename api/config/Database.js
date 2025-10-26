@@ -1,7 +1,17 @@
 import { Sequelize } from "sequelize";
-import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 
-dotenv.config("../.env");
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
+
+import dotenv from "dotenv";
+import { join } from "path";
+
+dotenv.config({
+  path: join(__dirname, ".env"),
+});
 
 const db = new Sequelize(
   process.env.DB_NAME,
