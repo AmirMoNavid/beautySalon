@@ -113,12 +113,15 @@ export const Login = async (req, res) => {
       { where: { id: userId } }
     );
 
-    res.cookie("refreshToken", refreshToken, {
-      httpOnly: false,
-      domain: new URL(ConfigPort.allowedDomains).hostname,
-      path: "/",
-      maxAge: 24 * 60 * 60 * 1000,
-    });
+     res.cookie("refreshToken", refreshToken, {
+  httpOnly: false,
+  secure: true,       
+  sameSite: "none",
+    domain: ".aramisbeauty.ir", 
+  path: "/",
+  maxAge: 24 * 60 * 60 * 1000,
+});
+
 
     res.json({
       name,

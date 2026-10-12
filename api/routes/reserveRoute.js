@@ -4,6 +4,7 @@ import {
   deleteReserve,
   getReserve,
   getAllReserves,
+  getAvailableReserveTimes,
 } from "../controllers/ReserveController.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
 
@@ -15,6 +16,8 @@ router.get("/reserve", getAllReserves);
 router.post("/reserve", createReserve);
 
 // router.put("/reserve/:id", verifyToken, updateReserve);
+
+router.get("/available", getAvailableReserveTimes);
 
 router.delete("/reserve/:id", verifyToken, deleteReserve);
 

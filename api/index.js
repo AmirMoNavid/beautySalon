@@ -1,3 +1,5 @@
+import "dotenv/config";
+
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
@@ -19,6 +21,8 @@ import reserveRoutes from "./routes/reserveRoute.js";
 
 import logger from "morgan";
 
+import "./tasks/cleanupReserves.js";
+
 const app = express();
 
 try {
@@ -33,8 +37,8 @@ const { port, allowedDomains } = ConfigPort;
 app.use(
   cors({
     credentials: true,
-    origin: [allowedDomains],
-  })
+    origin: [allowedDomains, "http://localhost:3000"],
+  }),
 );
 
 app.use(logger("dev"));

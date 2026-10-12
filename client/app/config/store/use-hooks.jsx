@@ -16,6 +16,7 @@ export const useStore = create((set) => ({
   host: "https://aramisbeauty.ir",
 
   baseUrl: "https://api.aramisbeauty.ir",
+  baseUrl: "http://localhost:5000",
 
   isLoading: false,
   salon: [],

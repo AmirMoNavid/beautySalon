@@ -8,6 +8,7 @@ import { usePathname, useRouter } from "next/navigation";
 import axios from "axios";
 import { useStore } from "@/app/config/store/use-hooks";
 import { END_POINTS } from "@/app/config/store/endPoints";
+import InstagramIcon from "@/app/assets/icons/InstaIcon";
 
 const Footer = () => {
   const { baseUrl } = useStore();
@@ -47,11 +48,11 @@ const Footer = () => {
             <h1 className="footer-titr-desc">درباره ما:</h1>
             <div className="footer-desc">
               <p>
-                سالن زیبایی واقع در شهر تهران
+                سالن زیبایی آرامیس واقع در شهرستان آبیک:
                 <br></br>
                 <br></br>
-                آدرس : فلکه دوم صادقیه اشرفی اصفهانی ؛؛ (نرسیده به بلوار
-                مرزداران ) برج نگین رضا طبقه دهم جنوبی
+                آبیک ، بلوار آیت اله طالقانی ، کوچه عطاردی ، ساختمان کاج ، طبقه
+                اول
               </p>
             </div>
           </div>
@@ -79,6 +80,16 @@ const Footer = () => {
                 </a>
               ))}
             </div>
+            <div className=" w-full  text-start">
+              <h1 className="footer-titr-desc mb-3">شبکه های اجتماعی:</h1>
+              <a
+                href="https://www.instagram.com/aramiss_beauty__/"
+                className="flex flex-col items-center md:items-start  justify-center"
+              >
+                <InstagramIcon />
+                اینستاگرام
+              </a>
+            </div>
           </div>
 
           <div className="column is-one-third p-[0.75rem]">
@@ -93,7 +104,7 @@ const Footer = () => {
               className="mx-2 inline-block"
               style={{ color: "#faff15" }}
             >
-              سالن زیبایی آرمیس
+              سالن زیبایی آرامیس
             </Link>
             میباشد.
           </h1>
@@ -102,7 +113,7 @@ const Footer = () => {
           style={{ marginTop: "10px" }}
           className="border-t border-white pt-2 md:my-2 columns bottom-header mt-6 text-center is-flex is-justify-content-center justify-center text-white"
         >
-          تهیه کننده : مهندس صالح خدایاری
+          طراحی و توسعه سایت : ۰۹۱۲۸۸۱۵۲۰۸ خدایاری{" "}
         </div>
       </div>
     </footer>

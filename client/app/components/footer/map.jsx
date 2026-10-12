@@ -6,7 +6,7 @@ import L from "leaflet";
 import marker from "../../assets/images/marker.png";
 
 const Map = ({ className = "" }) => {
-  const center = { lat: 35.732825191167024, lng: 51.3332863113248 };
+  const center = { lat: 36.03755115427064, lng: 50.528895013210416 };
   const ZOOM_LEVEL = 16;
   const mapRef = useRef();
 

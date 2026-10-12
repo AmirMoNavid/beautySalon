@@ -4,9 +4,9 @@ import Header from "./components/header";
 import Footer from "./components/footer/Footer";
 
 export const metadata = {
-  title: "سالن زیبایی آرمیس",
+  title: "سالن زیبایی آرامیس",
   description:
-    "سالن زیبایی و آموزشگاه آرمیس با 20 سال سابقه فعالیت در زمینه خدمات و آموزش رشته های مختلف آرایش و ﭘیرایش در خدمت شما عزیزان میباشد",
+    "سالن زیبایی و آموزشگاه آرامیس با 20 سال سابقه فعالیت در زمینه خدمات و آموزش رشته های مختلف آرایش و ﭘیرایش در خدمت شما عزیزان میباشد",
 };
 
 export default function RootLayout({ children }) {

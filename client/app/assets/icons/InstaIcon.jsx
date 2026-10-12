@@ -1,10 +1,8 @@
-import Link from 'next/link'
-import Instagram from "../../assets/images/insta.png"
+import Link from "next/link";
+import Instagram from "../../assets/images/insta.png";
 
-const InstagramIcon = ({ link = "https://www.instagram.com/_u/Abyekiha_eg" }) => (
-    <Link href={link}>
-        <img src={Instagram.src} className='icon-top' alt='robika' />
-    </Link>
-)
+const InstagramIcon = ({
+  link = "https://www.instagram.com/_u/Abyekiha_eg",
+}) => <img src={Instagram.src} className="w-8 h-8" alt="robika" />;
 
 export default InstagramIcon;
