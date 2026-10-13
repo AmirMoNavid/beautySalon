@@ -95,7 +95,7 @@ export const Login = async (req, res) => {
         isAdmin,
       },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "45s" }
+      { expiresIn: "45s" },
     );
     const refreshToken = jwt.sign(
       {
@@ -105,23 +105,22 @@ export const Login = async (req, res) => {
         isAdmin,
       },
       process.env.REFRESH_TOKEN_SECRET,
-      { expiresIn: "1d" }
+      { expiresIn: "1d" },
     );
 
     await Users.update(
       { refresh_token: refreshToken },
-      { where: { id: userId } }
+      { where: { id: userId } },
     );
 
-     res.cookie("refreshToken", refreshToken, {
-  httpOnly: false,
-  secure: true,       
-  sameSite: "none",
-    domain: ".aramisbeauty.ir", 
-  path: "/",
-  maxAge: 24 * 60 * 60 * 1000,
-});
-
+    res.cookie("refreshToken", refreshToken, {
+      httpOnly: false,
+      secure: true,
+      sameSite: "none",
+      // domain: ".aramisbeauty.ir",
+      path: "/",
+      maxAge: 24 * 60 * 60 * 1000,
+    });
 
     res.json({
       name,
@@ -154,7 +153,7 @@ export const Logout = async (req, res) => {
         where: {
           id: user.id,
         },
-      }
+      },
     );
     res.clearCookie("refreshToken");
     res.json({ title: "خارج شدید" });
@@ -216,7 +215,7 @@ export const updateUser = async (req, res) => {
         where: {
           id: req.body.id,
         },
-      }
+      },
     );
     res.json({
       message: "ویرایش انجام شد.",
@@ -296,7 +295,7 @@ export const updateProfile = async (req, res) => {
         where: {
           id: req.params.id,
         },
-      }
+      },
     );
     res.json("کاربر با موفقیت ویرایش شد.");
   } catch (error) {

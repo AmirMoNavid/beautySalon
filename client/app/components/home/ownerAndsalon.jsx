@@ -12,24 +12,29 @@ import { getGallery } from "@/app/services/getGallery";
 import { getSalon } from "@/app/services/getSalon";
 
 function OwnerAndsalon() {
-  const [details, setDetails] = useState({});
+  const [details, setDetails] = useState(null);
   const { host, setSalon, setGallery, gallery, salon } = useStore();
   const router = useRouter();
 
-  async function fetchData() {
-    const details = await getDatails();
-    setDetails(details);
-
-    const gallery = await getGallery();
-    setGallery(gallery);
-
-    const salon = await getSalon();
-    setSalon(salon);
-  }
-
   useEffect(() => {
+    async function fetchData() {
+      try {
+        const [details, gallery, salon] = await Promise.all([
+          getDatails(),
+          getGallery(),
+          getSalon(),
+        ]);
+
+        setDetails(details);
+        setGallery(gallery);
+        setSalon(salon);
+      } catch (error) {
+        console.error("Failed to fetch homepage data:", error);
+      }
+    }
+
     fetchData();
-  }, []);
+  }, [setSalon, setGallery]);
 
   return (
     <div className="flex flex-col w-full mb-4  md:p-0 ">

@@ -8,7 +8,6 @@ export const END_POINTS = {
   ARTICLE_CATEGORY_ID: "/api/article/catId/:catId",
   ARTICLE_COMMENTS: "/api/comment/:articleId",
   ARTICLE_SHAHRDARI: "/api/article/shahrdari",
-
   CATEGORY_SLUG: "/api/category/:slug",
   CATEGORY: "/api/category",
   CATEGORIES_SHOWED_ON_NAVBAR: "/api/category?showOnNavbar=1",
@@ -32,4 +31,5 @@ export const END_POINTS = {
   GET_EDCSERVICES: "/api/edcService",
   GET_SERVICES: "/api/service",
   CREATE_RESERVE: "/api/reserve",
+  AVAILABLE_RESERVE_TIMES: "/api/reserve/available",
 };

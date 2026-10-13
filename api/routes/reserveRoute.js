@@ -10,14 +10,14 @@ import { verifyToken } from "../middleware/VerifyToken.js";
 
 const router = express.Router();
 
+router.get("/reserve/available", getAvailableReserveTimes);
+
 router.get("/reserve/:id", getReserve);
 router.get("/reserve", getAllReserves);
 
 router.post("/reserve", createReserve);
 
 // router.put("/reserve/:id", verifyToken, updateReserve);
-
-router.get("/available", getAvailableReserveTimes);
 
 router.delete("/reserve/:id", verifyToken, deleteReserve);
 

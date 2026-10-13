@@ -2,8 +2,10 @@ import axios from "axios";
 import { END_POINTS } from "../config/store/endPoints";
 
 export async function getComments() {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-
+  const baseUrl =
+    process.env.NODE_ENV === "production"
+      ? process.env.NEXT_PUBLIC_API_URL
+      : process.env.NEXT_PUBLIC_LOCAL_API_URL;
   try {
     const { data } = await axios.get(`${baseUrl}${END_POINTS.COMMENTS}`);
 

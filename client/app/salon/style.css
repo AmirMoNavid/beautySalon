@@ -1,0 +1,27 @@
+.gallery-masonry {
+  columns: 1;
+  column-gap: 16px;
+}
+
+.gallery-masonry-item {
+  break-inside: avoid;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 640px) {
+  .gallery-masonry {
+    columns: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery-masonry {
+    columns: 3;
+  }
+}
+
+@media (min-width: 1536px) {
+  .gallery-masonry {
+    columns: 4;
+  }
+}

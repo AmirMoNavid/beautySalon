@@ -13,10 +13,15 @@ export const useStore = create((set) => ({
     text: "",
     isDisplayed: false,
   },
-  host: "https://aramisbeauty.ir",
+  host:
+    process.env.NODE_ENV === "development"
+      ? process.env.NEXT_PUBLIC_LOCAL_HOST
+      : process.env.NEXT_PUBLIC_PUBLIC_HOST,
 
-  baseUrl: "https://api.aramisbeauty.ir",
-  baseUrl: "http://localhost:5000",
+  baseUrl:
+    process.env.NODE_ENV === "development"
+      ? process.env.NEXT_PUBLIC_LOCAL_API_URL
+      : process.env.NEXT_PUBLIC_API_URL,
 
   isLoading: false,
   salon: [],

@@ -2,7 +2,10 @@ import axios from "axios";
 import { getCookie } from "cookies-next";
 
 const getServerData = async (endPoint) => {
-  const beseUrl = "https://api.aramisbeauty.ir";
+  const beseUrl =
+    process.env.NODE_ENV === "development"
+      ? process.env.NEXT_PUBLIC_LOCAL_API_URL
+      : process.env.NEXT_PUBLIC_API_URL;
 
   const url = beseUrl + endPoint;
   const token = getCookie("refreshToken");
@@ -26,7 +29,7 @@ const getServerData = async (endPoint) => {
         message: err?.message,
         url,
         data: typeof data === "string" ? data?.slice(0, 100) : data,
-      }
+      },
     );
     return [];
   }
