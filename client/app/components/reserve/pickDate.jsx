@@ -97,7 +97,7 @@ export default function PickDate() {
   }
 
   return (
-    <div className="flex flex-col md:flex-row w-full h-max md:h-full items-center gap-2 md:gap-0">
+    <div className="flex h-[93%] flex-col md:flex-row w-full overflow-auto py-1.5 md:h-full items-center gap-2 md:gap-0">
       <Calendar
         className="calendar"
         minDate={today}

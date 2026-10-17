@@ -35,9 +35,9 @@ function PickServices() {
   }
 
   return (
-    <div className="w-3/4 p-6 bg-white">
+    <div className="w-full md:w-3/4 md:p-6 p-2 bg-white h-[90%] overflow-hidden">
       <h1 className="text-xl font-bold mb-6 text-center">انتخاب سرویس</h1>
-      <div className="space-y-4">
+      <div className="space-y-4 h-5/6 overflow-auto p-1">
         {services?.map((service) => (
           <div
             onClick={() => handleSelect(service)}
