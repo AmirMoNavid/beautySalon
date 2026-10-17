@@ -110,14 +110,21 @@ const AddOrEdit = () => {
       ],
     },
     service: {
-      title: "خدمات آموزشی",
+      title: "خدمات سالن",
       endPoint: "/api/service",
-      // validationSchema: edcServicesFormSchema,
       inputs: [
         {
           name: "title",
           type: "text",
-          placeholder: "توضیحات کوتاه",
+          placeholder: "عنوان خدمت",
+        },
+        {
+          name: "durationMinutes",
+          type: "number",
+          placeholder: "مدت خدمت به دقیقه (مثلاً 60)",
+          defaultValue: 60,
+          min: 30,
+          step: 30,
         },
       ],
     },

@@ -3,7 +3,7 @@ import { END_POINTS } from "../config/store/endPoints";
 
 export async function getArticles() {
   const baseUrl =
-    process.env.NODE_ENV === "production"
+    process.env.NEXT_PUBLIC_NODE_ENV === "production"
       ? process.env.NEXT_PUBLIC_API_URL
       : process.env.NEXT_PUBLIC_LOCAL_API_URL;
   try {

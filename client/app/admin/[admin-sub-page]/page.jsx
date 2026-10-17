@@ -137,6 +137,10 @@ const ViewItems = () => {
             title: "عنوان",
             key: "title",
           },
+          {
+            title: "مدت زمان اجرای خدمات",
+            key: "durationMinutes",
+          },
         ],
       },
     },
@@ -309,7 +313,7 @@ const ViewItems = () => {
           onDelete(_data) {
             deleteItem(
               `${baseUrl}${data.dataTable.dataSourceEndpoint}`,
-              _data.id
+              _data.id,
             );
           },
           isBtnDisabled(_data) {
@@ -320,7 +324,7 @@ const ViewItems = () => {
           onEdit(_data) {
             const route = `/admin${data.dataTable.dataSourceEndpoint.replace(
               "/api",
-              ""
+              "",
             )}/edit?id=${_data.id}`;
             router.push(route);
           },

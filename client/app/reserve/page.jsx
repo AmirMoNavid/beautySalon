@@ -1,6 +1,5 @@
 "use client";
-import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import PickServices from "../components/reserve/pickServices";
 import { reserveStore } from "../config/store/reserveStore";
 import PickDate from "../components/reserve/pickDate";
@@ -18,6 +17,8 @@ function Reserve() {
     reserveStore();
 
   const { baseUrl } = useStore();
+
+  const router = useRouter();
 
   useEffect(() => {
     const navbar = document.getElementById("header");
@@ -56,16 +57,18 @@ function Reserve() {
 
       const res = await axios.post(
         `${baseUrl}${END_POINTS.CREATE_RESERVE}`,
-        data
+        data,
       );
-      toast("رزرو شما با موفقیت ثبت شد", {
+
+      toast.success("رزرو شما با موفقیت ثبت شد", {
         position: "top-center",
-        autoClose: 1000,
+        autoClose: 3000,
         theme: "dark",
-        type: "success",
       });
 
-      window.location.href = "/";
+      setTimeout(() => {
+        router.push("/");
+      }, 3100);
     } catch (err) {
       console.log(err);
     }

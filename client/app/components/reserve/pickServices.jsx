@@ -5,7 +5,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 function PickServices() {
-  const { setService, setStep, isSelected, setIsSelected } = reserveStore();
+  const { setService, setServiceId, setStep, setDate, setTime, setIsSelected } =
+    reserveStore();
   const { baseUrl } = useStore();
   const [services, setServices] = useState();
 
@@ -23,11 +24,13 @@ function PickServices() {
     getServices();
   }, []);
 
-  function handleSelect(title, e) {
-    e.target.style.background = "#000";
-    e.target.style.color = "#fff";
-    setService(title);
+  function handleSelect(service) {
+    setService(service.title);
+    setServiceId(service.id);
+    setDate("");
+    setTime("");
     setIsSelected(false);
+
     setStep(2);
   }
 
@@ -35,13 +38,16 @@ function PickServices() {
     <div className="w-3/4 p-6 bg-white">
       <h1 className="text-xl font-bold mb-6 text-center">انتخاب سرویس</h1>
       <div className="space-y-4">
-        {services?.map((service, index) => (
+        {services?.map((service) => (
           <div
-            onClick={(e) => handleSelect(service.title, e)}
-            key={index}
+            onClick={() => handleSelect(service)}
+            key={service.id}
             className="w-full flex group cursor-pointer hover:bg-black hover:text-white transition items-center justify-between service p-4 rounded shadow"
           >
-            {service.title}
+            <span>{service.title}</span>
+            <span className="text-sm opacity-70">
+              {service.durationMinutes} دقیقه
+            </span>
           </div>
         ))}
       </div>

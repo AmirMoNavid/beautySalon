@@ -1,6 +1,6 @@
 import cron from "node-cron";
 import moment from "jalali-moment";
-import Reserve from "../models/ReserveModel.js";
+import Reserve from "../models/reserveModel.js";
 
 const cleanupReserves = async () => {
   try {

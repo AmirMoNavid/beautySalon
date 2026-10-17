@@ -117,7 +117,7 @@ export const Login = async (req, res) => {
       httpOnly: false,
       secure: true,
       sameSite: "none",
-      // domain: ".aramisbeauty.ir",
+      domain: ".aramisbeauty.ir",
       path: "/",
       maxAge: 24 * 60 * 60 * 1000,
     });

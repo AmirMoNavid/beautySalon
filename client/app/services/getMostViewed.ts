@@ -3,7 +3,7 @@ import axios from "axios";
 export async function getMostViewed() {
   try {
     const baseUrl =
-      process.env.NODE_ENV === "production"
+      process.env.NEXT_PUBLIC_NODE_ENV === "production"
         ? process.env.NEXT_PUBLIC_API_URL
         : process.env.NEXT_PUBLIC_LOCAL_API_URL;
     const { data } = await axios.get(

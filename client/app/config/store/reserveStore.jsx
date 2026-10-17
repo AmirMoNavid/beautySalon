@@ -11,6 +11,8 @@ export const reserveStore = create((set) => ({
   name: "",
   number: "",
   isSelected: false,
+  serviceId: null,
+  setServiceId: (serviceId) => set({ serviceId }),
 
   setStep: (step) => set((state) => ({ step: step })),
   setService: (service) => set((state) => ({ service: service })),

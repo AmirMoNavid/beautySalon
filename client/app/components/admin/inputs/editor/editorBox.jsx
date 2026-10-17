@@ -27,7 +27,16 @@ const getInputElement = ({ props, data }) => {
           type={props.type}
         />
       );
-
+    case "number":
+      return (
+        <TextInput
+          defaultValue={data?.[dataKey] ?? ""}
+          name={dataKey}
+          type="number"
+          min={30}
+          step={30}
+        />
+      );
     case "rich-text":
       return (
         <TextEditor

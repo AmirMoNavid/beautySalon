@@ -11,7 +11,9 @@ import { useStore } from "@/app/config/store/use-hooks";
 import { END_POINTS } from "@/app/config/store/endPoints";
 
 export default function PickDate() {
-  const { date, setDate, setTime, time, setIsSelected } = reserveStore();
+  const { date, setDate, setTime, time, serviceId, setIsSelected } =
+    reserveStore();
+
   const today = new DateObject({ calendar: persian, locale: persian_fa });
 
   const { baseUrl } = useStore();
@@ -49,10 +51,20 @@ export default function PickDate() {
       setLoading(true);
       setAvailableTimes([]);
 
+      if (!date || !serviceId) {
+        setAvailableTimes([]);
+        setLoading(false);
+        return;
+      }
       try {
         const { data } = await axios.get(
           `${baseUrl}${END_POINTS.AVAILABLE_RESERVE_TIMES}`,
-          { params: { date } },
+          {
+            params: {
+              date,
+              serviceId,
+            },
+          },
         );
 
         if (!cancelled) {
@@ -76,7 +88,7 @@ export default function PickDate() {
     return () => {
       cancelled = true;
     };
-  }, [date, baseUrl]);
+  }, [date, serviceId, baseUrl]);
 
   function handleTimeClick(selected) {
     setSelectedTime(selected);

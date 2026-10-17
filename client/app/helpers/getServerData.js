@@ -3,7 +3,7 @@ import { getCookie } from "cookies-next";
 
 const getServerData = async (endPoint) => {
   const beseUrl =
-    process.env.NODE_ENV === "development"
+    process.env.NEXT_PUBLIC_NODE_ENV === "development"
       ? process.env.NEXT_PUBLIC_LOCAL_API_URL
       : process.env.NEXT_PUBLIC_API_URL;
 

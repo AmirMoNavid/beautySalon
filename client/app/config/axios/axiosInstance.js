@@ -5,7 +5,7 @@ const token = getCookie("refreshToken");
 
 export const axiosInstance = axios.create({
   baseURL:
-    process.env.NODE_ENV === "production"
+    process.env.NEXT_PUBLIC_NODE_ENV === "production"
       ? "https://api.aramisbeauty.ir"
       : "http://localhost:5000",
   withCredentials: true,
